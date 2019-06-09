@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportMesas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="81f50cc2-7e31-4de9-ac3d-86129e203e27">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="4cf6f07f-299b-48a9-9f8c-b4a9b20b1bbe"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="localizacion" class="java.lang.String">
+		<fieldDescription><![CDATA[localizacion]]></fieldDescription>
+	</field>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="capacidad" class="java.lang.Integer">
+		<fieldDescription><![CDATA[capacidad]]></fieldDescription>
+	</field>
+	<variable name="id_1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{id}]]></variableExpression>
+	</variable>
+	<variable name="capacidad_1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{capacidad}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="41" y="36" width="473" height="29" backcolor="#FFCCCC" uuid="484793bc-4831-4940-a510-05cdab6c9bfd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isUnderline="false"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[MESAS DEL LOCAL]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="14" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<rectangle>
+				<reportElement x="61" y="1" width="438" height="20" backcolor="#CCCCCC" uuid="db602cfe-40a8-4795-8be4-fb0ef338b035"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="81" y="2" width="51" height="20" uuid="0d526ba5-d171-461f-9159-77d2452fa70d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Nº Mesa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="208" y="2" width="100" height="20" uuid="49bccf47-62ed-4676-895b-8fe94d29475c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Localizacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="2" width="80" height="20" uuid="a4f2ff1e-f9fc-407c-a50d-4226cfb9bf52"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Capacidad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<rectangle>
+				<reportElement x="81" y="0" width="397" height="20" backcolor="#FFCCCC" uuid="7aa3fe42-8ee9-4c39-8b73-1c1304617a33"/>
+			</rectangle>
+			<rectangle radius="5">
+				<reportElement x="81" y="0" width="397" height="20" backcolor="#99FF99" uuid="1f40d958-97a8-47e6-b7f1-9a3c411e9aa8">
+					<printWhenExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue() % 2 == 0)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement x="81" y="0" width="51" height="20" uuid="2df49489-57f4-4a13-8c86-4e411a5cbf60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="208" y="0" width="100" height="20" uuid="e90f9d58-bc5f-4ffc-9476-63806ff0de05"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{localizacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="398" y="0" width="51" height="20" uuid="d98936e4-8c4c-4ed3-9a1b-be5e23012579"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{capacidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="223" y="34" width="80" height="20" uuid="1407bf1f-03dd-49de-8515-a81806f27f30"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="303" y="34" width="40" height="20" uuid="bdf59ba1-3e04-4068-94e1-69cbd8c9c11e"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="39" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="81" y="10" width="397" height="20" backcolor="#CCCCCC" uuid="4e6c3ec9-87f3-477e-b542-81e4e9ce69e5"/>
+				<box rightPadding="10">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total de mesas = "+$V{capacidad_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

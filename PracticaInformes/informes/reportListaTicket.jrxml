@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9f2f136c-a5bd-4e15-a013-b27bd87fe3ac">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="fc17f35e-d062-41a6-9ca9-b65be8aa98c9">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="nomProducto" class="java.lang.String">
+			<fieldDescription><![CDATA[nomProducto]]></fieldDescription>
+		</field>
+		<field name="precio" class="java.lang.Integer">
+			<fieldDescription><![CDATA[precio]]></fieldDescription>
+		</field>
+		<field name="categoria" class="java.lang.String">
+			<fieldDescription><![CDATA[categoria]]></fieldDescription>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="estado" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[estado]]></fieldDescription>
+	</field>
+	<field name="idMesa" class="java.lang.Integer">
+		<fieldDescription><![CDATA[idMesa]]></fieldDescription>
+	</field>
+	<field name="numTicket" class="java.lang.Integer">
+		<fieldDescription><![CDATA[numTicket]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.lang.String">
+		<fieldDescription><![CDATA[fecha]]></fieldDescription>
+	</field>
+	<field name="productos" class="java.util.List">
+		<fieldDescription><![CDATA[productos]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="189" y="25" width="177" height="29" uuid="374395c0-8b11-452e-ab3f-e074b1bc7358"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Lista de Ticket]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="111" splitType="Stretch">
+			<rectangle radius="5">
+				<reportElement x="29" y="0" width="500" height="20" backcolor="#CCFFCC" uuid="c06833a0-2eed-4179-be25-0d851e487a2b"/>
+			</rectangle>
+			<textField>
+				<reportElement x="46" y="0" width="87" height="20" uuid="71ccc7f7-f734-4ef9-815c-ea4d2f937805"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Ticket nº: "+$F{numTicket}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="0" width="83" height="20" uuid="ebcd4267-2d47-4313-91f5-b842d687f12a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Mesa nº: "+$F{idMesa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="0" width="157" height="20" uuid="41bd7175-9938-40b0-b4db-2f0099e76613"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fecha: "+$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="0" width="76" height="20" uuid="d0d38047-7116-49dd-8866-96add3d62a6c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{estado}==true?"Abierto":"Cerrado")]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement isPrintRepeatedValues="false" mode="Opaque" x="45" y="68" width="324" height="23" backcolor="#CCCCFF" uuid="598d726a-e806-4eac-a612-46a8045438f6"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="dataset1" uuid="f0b93fd9-c2b6-4220-9597-046cde5549a8">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{productos})]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="23" width="324">
+						<textField>
+							<reportElement x="38" y="0" width="100" height="20" uuid="1932550f-01bd-4ed0-bc2f-c6f43058f688"/>
+							<textElement verticalAlignment="Middle">
+								<font size="10"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$F{nomProducto}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="220" y="0" width="64" height="20" uuid="850fb9f0-e346-42aa-bab8-c430df8ee613"/>
+							<textElement textAlignment="Center" verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$F{precio}+" €"]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<staticText>
+				<reportElement x="84" y="37" width="100" height="20" forecolor="#006666" uuid="804f9136-4c01-4e31-b3d8-5eed11eafe8a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="13" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="37" width="64" height="20" forecolor="#006666" uuid="d086d425-ac59-41b1-8399-0c5d74744f2f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13"/>
+				</textElement>
+				<text><![CDATA[Precio]]></text>
+			</staticText>
+			<line>
+				<reportElement x="46" y="57" width="323" height="1" uuid="be3f971e-a512-4fa2-b4cd-25fc5c134134"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="237" y="34" width="80" height="20" uuid="8082d699-75a4-4298-9f26-dba3b81beea9"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="317" y="34" width="40" height="20" uuid="8add6fef-5a0f-41a2-86fa-32a46e823016"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

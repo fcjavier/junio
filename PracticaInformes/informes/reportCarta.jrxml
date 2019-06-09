@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportCarta" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="88230f43-43ad-4256-8cda-c253765c50e2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="precio" class="java.lang.Integer">
+		<fieldDescription><![CDATA[precio]]></fieldDescription>
+	</field>
+	<field name="nomProducto" class="java.lang.String">
+		<fieldDescription><![CDATA[nomProducto]]></fieldDescription>
+	</field>
+	<field name="categoria" class="java.lang.String">
+		<fieldDescription><![CDATA[categoria]]></fieldDescription>
+	</field>
+	<group name="tipoProducto" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{categoria}]]></groupExpression>
+		<groupHeader>
+			<band height="51">
+				<textField>
+					<reportElement mode="Opaque" x="68" y="10" width="409" height="20" backcolor="#CCCCCC" uuid="05961f4c-fe41-4e32-b383-71ed7c9c1a42"/>
+					<box leftPadding="10"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{categoria}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="32" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="38" y="0" width="477" height="31" backcolor="#CCCCFF" uuid="b19ce476-6113-4cc6-b372-932fa5556749"/>
+				<box leftPadding="10"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Carta de Menú]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<rectangle radius="5">
+				<reportElement x="81" y="0" width="374" height="20" backcolor="#CCFFCC" uuid="b79eb8b7-9be6-4558-8857-daf561e19645"/>
+			</rectangle>
+			<textField>
+				<reportElement x="94" y="0" width="100" height="20" uuid="36acc999-3042-471d-ade4-050f2311944d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomProducto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="344" y="0" width="100" height="20" uuid="b5712fe4-62d6-4641-935a-1f7ad6fa18ff"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precio}+".00€"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="211" y="6" width="80" height="20" uuid="61e337cc-a1d7-4af5-899c-a8d99af3a677"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="291" y="6" width="40" height="20" uuid="105d3f4a-0572-4e24-96b4-8e89cd71737a"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
